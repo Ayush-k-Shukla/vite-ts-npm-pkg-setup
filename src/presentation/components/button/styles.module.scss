@@ -1,0 +1,27 @@
+.iconButton {
+    padding: 0 !important;
+}
+
+.btnBody {
+    position: relative;
+    .btnLoader {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none !important;
+    }
+    .label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+}
+.btnLoading {
+    .label {
+        visibility: hidden;
+    }
+    .btnLoader {
+        display: block !important;
+    }
+}
