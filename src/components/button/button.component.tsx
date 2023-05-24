@@ -1,5 +1,6 @@
 import { IconButton } from '@mui/material';
 import { MouseEventHandler } from 'react';
+import mySercrets from '../../store/store';
 import CustomCircularProgress from '../progress/circular_progress.component';
 import styles from './styles.module.scss';
 interface PropsInterface {
@@ -21,6 +22,23 @@ interface PropsInterface {
     fullWidth?: boolean;
 }
 
+/**
+ * Short description
+ *
+ * @param {PropsInterface} {
+ *     variant,
+ *     label,
+ *     disabled = false,
+ *     onButtonClick,
+ *     prependIcon,
+ *     appendIcon,
+ *     size = 'medium',
+ *     borderless = false,
+ *     loading = false,
+ *     fullWidth = false,
+ * }
+ * @return {*}
+ */
 function CustomButton({
     variant,
     label,
@@ -49,6 +67,9 @@ function CustomButton({
                 return 'primary';
         }
     };
+
+    console.log(`button is called and preserved sercrets are : `, mySercrets);
+
     return (
         <IconButton
             size={size}
@@ -74,12 +95,14 @@ function CustomButton({
                         loading ? styles.btnLoading : ''
                     }`}
                 >
-                    <span className={styles.btnLoader}>
-                        <CustomCircularProgress
-                            center="center_y"
-                            color={getLoaderColorByButtonVariant()}
-                        />
-                    </span>
+                    {loading && (
+                        <span className={styles.btnLoader}>
+                            <CustomCircularProgress
+                                center="center_y"
+                                color={getLoaderColorByButtonVariant()}
+                            />
+                        </span>
+                    )}
                     <span className={styles.label}>
                         {!disabled && prependIcon}
                         {label}

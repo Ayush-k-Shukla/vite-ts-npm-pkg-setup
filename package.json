@@ -1,53 +1,47 @@
 {
     "name": "vite-tst",
     "private": false,
-    "version": "0.0.0",
+    "version": "0.0.6",
+    "type": "module",
+    "main": "dist/index.umd.js",
+    "module": "dist/index.es.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.es.js",
+            "require": "./dist/index.umd.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "files": [
+        "/dist"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
+        "prepare": "npm run build",
         "preview": "vite preview"
     },
     "dependencies": {
-        "@dnd-kit/core": "^6.0.8",
-        "@dnd-kit/sortable": "^7.0.2",
         "@emotion/react": "^11.10.6",
         "@emotion/styled": "^11.10.6",
         "@mui/icons-material": "^5.8.0",
-        "@mui/material": "^5.11.13",
-        "@mui/x-date-pickers": "^6.1.0",
-        "@reduxjs/toolkit": "^1.9.3",
-        "@stripe/react-stripe-js": "^2.1.0",
-        "antd": "^5.4.4",
-        "axios": "^0.27.2",
-        "cors": "^2.8.5",
-        "crypto-js": "^4.1.1",
-        "dayjs": "^1.11.7",
-        "dotenv": "^16.0.3",
-        "express": "^4.18.2",
-        "firebase": "^9.17.2",
-        "graphql-request": "^5.2.0",
-        "inversify": "^6.0.1",
-        "inversify-react": "^1.1.0",
+        "@mui/material": "^5.13.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-easy-crop": "^4.7.4",
-        "react-redux": "^8.0.5",
         "react-router-dom": "^6.9.0",
-        "reflect-metadata": "^0.1.13",
-        "sass": "^1.52.1",
-        "stream-chat": "^8.5.0",
-        "stream-chat-react": "^10.7.4",
-        "stripe": "^12.0.0",
-        "uuid": "^9.0.0"
+        "sass": "^1.52.1"
     },
     "devDependencies": {
-        "@types/crypto-js": "^4.1.1",
         "@types/react": "^18.0.27",
         "@types/react-dom": "^18.0.10",
         "@types/react-router-dom": "^5.3.3",
-        "@types/uuid": "^9.0.1",
         "@vitejs/plugin-react": "^3.1.0",
         "typescript": "^4.9.3",
-        "vite": "^4.1.0"
+        "vite": "^4.1.0",
+        "vite-plugin-dts": "^1.7.3"
     }
 }
