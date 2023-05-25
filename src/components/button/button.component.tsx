@@ -1,6 +1,8 @@
 import { IconButton } from '@mui/material';
-import { MouseEventHandler } from 'react';
-import mySercrets from '../../store/store';
+import { MouseEventHandler, useEffect } from 'react';
+import { di } from '../../core/injection_container';
+import { UserRepositoryImpl } from '../../data/repository_impl/user.repo_impl';
+import mySercrets from '../../store/redux';
 import CustomCircularProgress from '../progress/circular_progress.component';
 import styles from './styles.module.scss';
 interface PropsInterface {
@@ -67,6 +69,19 @@ function CustomButton({
                 return 'primary';
         }
     };
+
+    // const dispatch = useAppDispatch();
+    // const { users } = useAppSelector((state) => state.userStore);
+
+    const getDirectData = async () => {
+        const data = await di.get(UserRepositoryImpl).getUsers();
+        console.log(`di : ${data}`);
+    };
+    useEffect(() => {
+        // dispatch(getUsers());
+        getDirectData();
+    }, []);
+    // console.log({ users });
 
     console.log(`button is called and preserved sercrets are : `, mySercrets);
 

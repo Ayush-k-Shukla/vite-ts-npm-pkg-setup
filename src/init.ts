@@ -1,4 +1,4 @@
-import mySercrets from './store/store';
+import mySercrets from './store/redux';
 
 export interface IProps {
     activationSecret: string;
